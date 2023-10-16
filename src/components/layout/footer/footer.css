@@ -1,0 +1,23 @@
+.footerConsulta {
+  background-color: #a19882;
+  font-family: "Castoro Titling", cursive;
+  text-align: left;
+  font-size: 21px;
+  width: 100%;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 5px 0px 5px 0px;
+  color: black;
+}
+.footerDiv {
+  background-color: #e6ddc6;
+  font-family: "Roboto", sans-serif;
+  text-align: left;
+  font-size: 19px;
+  letter-spacing: 1;
+  padding-bottom: 20px;
+  margin: 0px;
+}
+.footerDiv p {
+  margin: 0px;
+}
