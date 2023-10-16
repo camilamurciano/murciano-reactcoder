@@ -1,13 +1,14 @@
 import { Badge } from "@mui/material";
 import { BsCartCheckFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const CartWidget = () => {
   return (
-    <div>
-      <Badge badgeContent={0} showZero color="primary">
-        <BsCartCheckFill size={32} />
+    <Link to="/cart">
+      <Badge style={{ margin: 0 }} badgeContent={0} showZero color="primary">
+        <BsCartCheckFill size={30} />
       </Badge>
-    </div>
+    </Link>
   );
 };
 

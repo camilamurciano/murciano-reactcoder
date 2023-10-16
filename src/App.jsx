@@ -1,3 +1,15 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ItemListContainer from "./components/pages/itemListContainer/ItemListContainer";
+import ItemDetailContainer from "./components/pages/itemDetailContainer/ItemDetailContainer";
+import { Home } from "./components/layout/home/home";
+import { NavBar } from "./components/layout/navBar/NavBar";
+import { Login } from "./components/pages/login/Login";
+import Cart from "./components/pages/cart/CartContainer";
+import { Footer } from "./components/layout/footer/Footer";
+import { Header } from "./components/layout/header/Header";
+import Layout from "./components/layout/layout";
+{
+  /*S
 import { Login } from "./components/pages/login/Login";
 import { NavBar } from "./components/layout/navBar/NavBar";
 import Itemlistcontainer from "./components/pages/itemListContainer/ItemListContainer";
@@ -6,6 +18,8 @@ import { Footer } from "./components/layout/footer/Footer";
 import { Header } from "./components/layout/header/Header";
 import ItemDetailContainer from "./components/pages/itemDetailContainer/ItemDetailContainer";
 //import CounterPresentacional from "./components/common/cartWidget/counter/CounterContainer";
+ */
+}
 
 function App() {
   {
@@ -13,24 +27,40 @@ function App() {
   }
 
   return (
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="/" element={<ItemListContainer />} />
+          <Route
+            path="/category/:categoryName"
+            element={<ItemListContainer />}
+          />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/ItemDetail/:id" element={<ItemDetailContainer />} />
+
+          <Route path="/login" element={<Login />} />
+
+          <Route path="*" element={<h1>Pages not found</h1>} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+}
+{
+  /*
     <div>
+      
       <Header />
       <NavBar />
       <Login />
       <Home />
       <Itemlistcontainer />
       <ItemDetailContainer />
+      {/*<CounterPresentacional stock={5} />
       <Footer />
-      {/** 
-      <NavBar />
-      <Login />
-      <Home />
-      <Itemlistcontainer />
-footer va
-      <ItemDetailContainer />
-      {/*<CounterPresentacional stock={5} />*/}
+    
     </div>
-  );
+    */
 }
 
 export default App;
