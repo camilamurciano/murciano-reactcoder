@@ -20,7 +20,7 @@ export const NavBar = () => {
             <li>Gatos</li>
           </Link>
         </ul>
-        <CartWidget size={25} />
+        <CartWidget className="carrito" size={25} />
       </div>
     </>
   );

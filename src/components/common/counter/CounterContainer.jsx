@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import CounterPresentacional from "./CounterPresentacional";
 
-const CounterContainer = ({ stock, onAdd }) => {
-  const [contador, setContador] = useState(1);
+const CounterContainer = ({ stock, onAdd, initial = 1 }) => {
+  const [contador, setContador] = useState(initial);
   const [nombre, setNombre] = useState("pepito");
 
   const sumar = () => {

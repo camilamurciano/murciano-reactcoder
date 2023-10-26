@@ -5,7 +5,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
-export const ItemDetail = ({ productSelected, onAdd }) => {
+export const ItemDetail = ({ productSelected, onAdd, initial }) => {
   return (
     <div>
       <Card sx={{ maxWidth: 250 }}>
@@ -22,7 +22,11 @@ export const ItemDetail = ({ productSelected, onAdd }) => {
           />
         </CardActionArea>
       </Card>
-      <CounterContainer stock={productSelected.stock} onAdd={onAdd} />
+      <CounterContainer
+        stock={productSelected.stock}
+        onAdd={onAdd}
+        initial={initial}
+      />
     </div>
   );
 };

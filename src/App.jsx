@@ -8,6 +8,7 @@ import Cart from "./components/pages/cart/CartContainer";
 import { Footer } from "./components/layout/footer/Footer";
 import { Header } from "./components/layout/header/Header";
 import Layout from "./components/layout/layout";
+import CartContextComponent from "./context/cartContext";
 {
   /*S
 import { Login } from "./components/pages/login/Login";
@@ -28,21 +29,22 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<ItemListContainer />} />
-          <Route
-            path="/category/:categoryName"
-            element={<ItemListContainer />}
-          />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/ItemDetail/:id" element={<ItemDetailContainer />} />
+      <CartContextComponent>
+        <Routes>
+          <Route element={<Layout />}>
+            <Route path="/" element={<ItemListContainer />} />
+            <Route
+              path="/category/:categoryName"
+              element={<ItemListContainer />}
+            />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/ItemDetail/:id" element={<ItemDetailContainer />} />
+            <Route path="/login" element={<Login />} />
 
-          <Route path="/login" element={<Login />} />
-
-          <Route path="*" element={<h1>Pages not found</h1>} />
-        </Route>
-      </Routes>
+            <Route path="*" element={<h1>Pages not found</h1>} />
+          </Route>
+        </Routes>
+      </CartContextComponent>
     </BrowserRouter>
   );
 }

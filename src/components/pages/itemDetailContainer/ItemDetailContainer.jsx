@@ -1,11 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { products } from "../../../productosMock";
 import { ItemDetail } from "./ItemDetail";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import { CartContext } from "../../../context/cartContext";
 
 const ItemDetailContainer = () => {
   const [productSelected, setProductSelected] = useState({});
   const { id } = useParams();
+  const { addToCart, getQuantityById } = useContext(CartContext);
+  const navigate = useNavigate(); //para cuando el usuario de click en un boton, y que vaya a otra ruta sin que sea link
+  let totalQuantity = getQuantityById(+id);
 
   useEffect(() => {
     let producto = products.find((product) => product.id === +id);
@@ -21,13 +25,25 @@ const ItemDetailContainer = () => {
 
   //console.log(productSelected);
   const onAdd = (cantidad) => {
-    let obj = {
+    let item = {
       ...productSelected,
       quantity: cantidad,
     };
-    console.log("este es el producto que se agregó", obj);
+    addToCart(item);
+    {
+      /*setTimeout(() => {
+      navigate("/cart"); // esto nos sirve para que cuando se haga click, se tarde 1,5 segundo en ir al carrito
+    }, 1500);
+    */
+    }
   };
-  return <ItemDetail productSelected={productSelected} onAdd={onAdd} />;
+  return (
+    <ItemDetail
+      productSelected={productSelected}
+      onAdd={onAdd}
+      initial={totalQuantity}
+    />
+  );
 };
 
 export default ItemDetailContainer;

@@ -12,7 +12,7 @@ const CounterPresentacional = ({
       <Button color="secondary" size="small" onClick={sumar} variant="outlined">
         SUMAR
       </Button>
-      <h4 style={{ margin: 0 }}> {contador} </h4>
+      <h4 style={{ margin: 0, fontSize: "30px" }}> {contador} </h4>
       <Button
         color="secondary"
         size="small"
