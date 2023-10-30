@@ -9,6 +9,8 @@ import { Footer } from "./components/layout/footer/Footer";
 import { Header } from "./components/layout/header/Header";
 import Layout from "./components/layout/layout";
 import CartContextComponent from "./context/cartContext";
+import CheckoutFormik from "./components/pages/checkoutFormik/CheckoutFormik";
+
 {
   /*S
 import { Login } from "./components/pages/login/Login";
@@ -39,7 +41,7 @@ function App() {
             />
             <Route path="/cart" element={<Cart />} />
             <Route path="/ItemDetail/:id" element={<ItemDetailContainer />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/checkoutformik" element={<CheckoutFormik />} />
 
             <Route path="*" element={<h1>Pages not found</h1>} />
           </Route>

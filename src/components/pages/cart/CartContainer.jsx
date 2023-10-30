@@ -19,7 +19,7 @@ const CartContainer = () => {
         </div>
       ))}
 
-      <Link to="/login">
+      <Link to="/checkoutformik">
         <Button variant="contained" color="secondary">
           Finalizar Compra
         </Button>
