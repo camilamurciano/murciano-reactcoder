@@ -36,10 +36,36 @@ const CartContextComponent = ({ children }) => {
     setCart([]);
   };
 
-  // obtener el total del carrito
   // poder borrar un elemento particular del carrito
+  const deleteProductById = (id) => {
+    let newArr = cart.filter((product) => product.id !== id); //devolvemos un array nuevo, pero solo con los productos que queremos.
+    setCart(newArr); //eesto es siempre para eliminar algo en react
+  };
+  // obtener el total del carrito
+  const getTotalPrice = () => {
+    let total = cart.reduce((acumulador, elemento) => {
+      return acumulador + elemento.price * elemento.quantity;
+    }, 0);
+
+    return total;
+  };
   // obtener la cantidad de elementos
-  let data = { cart, addToCart, getQuantityById, clearCart };
+
+  const getTotalQuantity = () => {
+    let total = cart.reduce((acumlador, elemento) => {
+      return acumlador + elemento.quantity;
+    }, 0);
+    return total;
+  };
+  let data = {
+    cart,
+    addToCart,
+    getQuantityById,
+    clearCart,
+    deleteProductById,
+    getTotalPrice,
+    getTotalQuantity,
+  };
   return <CartContext.Provider value={data}>{children}</CartContext.Provider>;
 };
 
