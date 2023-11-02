@@ -58,6 +58,8 @@ const CartContainer = () => {
             <Button variant="contained" color="secondary">
               Finalizar Compra
             </Button>
+          </Link>
+          <Link>
             <Button
               variant="contained"
               color="secondary"

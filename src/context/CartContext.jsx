@@ -3,7 +3,9 @@ import { createContext, useState } from "react";
 export const CartContext = createContext();
 
 const CartContextComponent = ({ children }) => {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(
+    JSON.parse(localStorage.getItem("cart")) || []
+  );
   const addToCart = (product) => {
     let exist = isInCart(product.id);
     if (exist) {
@@ -18,8 +20,10 @@ const CartContextComponent = ({ children }) => {
         }
       });
       setCart(newArray);
+      localStorage.setItem("cart", JSON.stringify(newArray));
     } else {
       setCart([...cart, product]);
+      localStorage.setItem("cart", JSON.stringify([...cart, product]));
     }
   };
   const isInCart = (id) => {
@@ -34,12 +38,14 @@ const CartContextComponent = ({ children }) => {
   //limpiar el carrito
   const clearCart = () => {
     setCart([]);
+    localStorage.removeItem("cart");
   };
 
   // poder borrar un elemento particular del carrito
   const deleteProductById = (id) => {
     let newArr = cart.filter((product) => product.id !== id); //devolvemos un array nuevo, pero solo con los productos que queremos.
     setCart(newArr); //eesto es siempre para eliminar algo en react
+    localStorage.setItem("cart", JSON.stringify(newArr));
   };
   // obtener el total del carrito
   const getTotalPrice = () => {

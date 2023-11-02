@@ -4,6 +4,9 @@ import { ItemDetail } from "./ItemDetail";
 import { useParams, useNavigate } from "react-router-dom";
 import { CartContext } from "../../../context/cartContext";
 import Swal from "sweetalert2";
+import { db } from "../../../firebaseConfig";
+
+import { getDoc, collection, doc } from "firebase/firestore";
 
 const ItemDetailContainer = () => {
   const [productSelected, setProductSelected] = useState({});
@@ -11,18 +14,16 @@ const ItemDetailContainer = () => {
   const { id } = useParams();
   const { addToCart, getQuantityById } = useContext(CartContext);
   const navigate = useNavigate(); //para cuando el usuario de click en un boton, y que vaya a otra ruta sin que sea link
-  let totalQuantity = getQuantityById(+id);
+  let totalQuantity = getQuantityById(id);
 
   useEffect(() => {
-    let producto = products.find((product) => product.id === +id);
+    let itemCollection = collection(db, "products");
 
-    const getProduct = new Promise((resolve, reject) => {
-      resolve(producto);
-      //reject("error");
+    let refDoc = doc(itemCollection, id);
+
+    getDoc(refDoc).then((res) => {
+      setProductSelected({ id: res.id, ...res.data() });
     });
-    getProduct
-      .then((res) => setProductSelected(res))
-      .catch((err) => console.log(err));
   }, [id]);
 
   //console.log(productSelected);

@@ -3,6 +3,9 @@ import { products } from "../../../productosMock";
 import ItemList from "./ItemList";
 import { useParams } from "react-router-dom";
 import Skeleton from "@mui/material/Skeleton";
+import { getDocs, collection, query, where, addDoc } from "firebase/firestore";
+import { db } from "../../../firebaseConfig";
+import { Button } from "@mui/material";
 
 const ItemListContainer = () => {
   const [items, setItems] = useState([]);
@@ -11,18 +14,27 @@ const ItemListContainer = () => {
   console.log(categoryName);
 
   useEffect(() => {
-    const productosFiltrados = products.filter(
-      (product) => product.category === categoryName
-    );
+    let productsCollection = collection(db, "products");
 
-    const tarea = new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(categoryName ? productosFiltrados : products);
-      }, 500);
+    let consulta = undefined;
+
+    if (!categoryName) {
+      // SI NO EXISTE CATEGORYNAME ---> todos mis productos
+      consulta = productsCollection;
+    } else {
+      // SI EXISTE CATEGORYNAME ---> parte de mis productos
+      consulta = query(
+        productsCollection,
+        where("category", "==", categoryName)
+      );
+    }
+
+    getDocs(consulta).then((res) => {
+      let newArray = res.docs.map((product) => {
+        return { ...product.data(), id: product.id };
+      });
+      setItems(newArray);
     });
-    tarea
-      .then((res) => setItems(res))
-      .catch((error) => console.log("reject: ", error));
   }, [categoryName]);
 
   return (
