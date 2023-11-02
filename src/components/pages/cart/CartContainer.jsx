@@ -54,7 +54,7 @@ const CartContainer = () => {
       {cart.length > 0 && (
         <div>
           <h2>El total a pagar es: {total}</h2>
-          <Link to="/checkoutformik">
+          <Link to="/login">
             <Button variant="contained" color="secondary">
               Finalizar Compra
             </Button>

@@ -30,11 +30,17 @@ const ProductCard = ({ item }) => {
           </Typography>
         </CardContent>
         <CardActions>
-          <Link to={`/itemDetail/${item.id}`}>
-            <Button color="secondary" size="small" variant="outlined">
-              Ver detalle
+          {item.stock > 0 ? (
+            <Link to={`/itemDetail/${item.id}`}>
+              <Button color="secondary" size="small" variant="outlined">
+                Detalles
+              </Button>
+            </Link>
+          ) : (
+            <Button variant="contained" color="secondary">
+              SIN STOCK
             </Button>
-          </Link>
+          )}
         </CardActions>
       </Card>
     </div>
