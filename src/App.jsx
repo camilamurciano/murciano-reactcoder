@@ -7,7 +7,7 @@ import { Login } from "./components/pages/login/Login";
 import Cart from "./components/pages/cart/CartContainer";
 import { Footer } from "./components/layout/footer/Footer";
 import { Header } from "./components/layout/header/Header";
-import Layout from "./components/layout/layout";
+import Layout from "./components/layout/Layout";
 import CartContextComponent from "./context/cartContext";
 import CheckoutFormik from "./components/pages/checkoutFormik/CheckoutFormik";
 
