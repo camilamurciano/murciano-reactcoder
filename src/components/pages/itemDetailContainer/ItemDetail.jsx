@@ -1,6 +1,7 @@
 import CounterContainer from "../../common/counter/CounterContainer";
 import * as React from "react";
 import Card from "@mui/material/Card";
+
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
@@ -34,6 +35,19 @@ export const ItemDetail = ({
               image={productSelected.img}
               alt="green iguana"
             />
+          </CardActionArea>
+        </Card>
+        <Card style={{ display: "flex", justifyContent: "end" }}>
+          <CardActionArea>
+            <Typography
+              fontSize="20px"
+              alignItems="end"
+              gutterBottom
+              variant="h5"
+              component="div"
+            >
+              {productSelected.description}
+            </Typography>
           </CardActionArea>
         </Card>
       </div>
