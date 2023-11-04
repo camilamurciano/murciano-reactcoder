@@ -15,7 +15,7 @@ export const Footer = () => {
           <p>Buenos Aires, Argentina</p>
           <div style={{ display: "flex", justifyContent: "end" }}>
             <a href="">
-              <CgMail size={30} />
+              <CgMail size={35} />
             </a>
             <a href="">
               <IoLogoWhatsapp size={35} />
