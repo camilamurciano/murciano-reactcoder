@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { products } from "../../../productosMock";
 import { ItemDetail } from "./ItemDetail";
 import { useParams, useNavigate } from "react-router-dom";
-import { CartContext } from "../../../context/cartContext";
+import { CartContextt } from "../../../context/CartContextt";
 import Swal from "sweetalert2";
 import { db } from "../../../firebaseConfig";
 
@@ -12,7 +12,7 @@ const ItemDetailContainer = () => {
   const [productSelected, setProductSelected] = useState({});
   const [showCounter, setShowCounter] = useState(true);
   const { id } = useParams();
-  const { addToCart, getQuantityById } = useContext(CartContext);
+  const { addToCart, getQuantityById } = useContext(CartContextt);
   const navigate = useNavigate(); //para cuando el usuario de click en un boton, y que vaya a otra ruta sin que sea link
   let totalQuantity = getQuantityById(id);
 

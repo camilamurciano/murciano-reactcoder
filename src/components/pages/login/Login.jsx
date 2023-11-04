@@ -2,7 +2,7 @@ import { Button, TextField } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
 import "./login.css";
-import { CartContext } from "../../../context/cartContext";
+import { CartContextt } from "../../../context/CartContextt";
 import { addDoc, serverTimestamp, updateDoc, doc } from "firebase/firestore";
 import { db } from "../../../firebaseConfig";
 import { collection } from "firebase/firestore";
@@ -13,7 +13,7 @@ export const Login = () => {
     email: "",
   });
   const [orderId, setOrderId] = useState(null);
-  const { cart, getTotalPrice, clearCart } = useContext(CartContext);
+  const { cart, getTotalPrice, clearCart } = useContext(CartContextt);
 
   const total = getTotalPrice();
   {

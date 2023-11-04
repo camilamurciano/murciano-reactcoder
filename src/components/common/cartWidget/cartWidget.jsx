@@ -2,12 +2,12 @@ import { Badge } from "@mui/material";
 import { useContext } from "react";
 import { BsCartCheckFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import { CartContext } from "../../../context/cartContext";
+import { CartContextt } from "../../../context/CartContextt";
 
 const CartWidget = () => {
-  const e = useContext(CartContext);
+  const e = useContext(CartContextt);
   console.log({ e });
-  const { getTotalQuantity } = useContext(CartContext);
+  const { getTotalQuantity } = useContext(CartContextt);
   let total = getTotalQuantity();
   return (
     <Link to="/cart">

@@ -1,15 +1,15 @@
 import { Link } from "react-router-dom";
 import { Button, IconButton } from "@mui/material";
 import { useContext } from "react";
-import { CartContext } from "../../../context/cartContext";
+import { CartContextt } from "../../../context/CartContextt";
 import Swal from "sweetalert2";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 const CartContainer = () => {
-  const x = useContext(CartContext);
+  const x = useContext(CartContextt);
   console.log(x);
   const { cart, clearCart, deleteProductById, getTotalPrice } =
-    useContext(CartContext);
+    useContext(CartContextt);
   let total = getTotalPrice();
   const clearCartWithSwal = () => {
     Swal.fire({

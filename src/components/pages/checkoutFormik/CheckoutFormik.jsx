@@ -2,7 +2,7 @@ import { Button, TextField } from "@mui/material";
 import { useFormik } from "formik";
 import { useContext, useState } from "react";
 import * as Yup from "yup";
-import { CartContext } from "../../../context/cartContext";
+import { CartContextt } from "../../../context/CartContextt";
 import { db } from "../../../firebaseConfig";
 import { Link } from "react-router-dom";
 import {
@@ -15,7 +15,7 @@ import {
 
 const CheckoutFormik = () => {
   const [orderId, setOrderId] = useState(null);
-  const { cart, getTotalPrice, clearCart } = useContext(CartContext);
+  const { cart, getTotalPrice, clearCart } = useContext(CartContextt);
 
   const total = getTotalPrice();
 
