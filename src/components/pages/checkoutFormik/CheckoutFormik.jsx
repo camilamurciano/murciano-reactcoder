@@ -1,8 +1,42 @@
 import { Button, TextField } from "@mui/material";
 import { useFormik } from "formik";
+import { useContext, useState } from "react";
 import * as Yup from "yup";
+import { CartContext } from "../../../context/cartContext";
+import { db } from "../../../firebaseConfig";
+import { Link } from "react-router-dom";
+import {
+  addDoc,
+  collection,
+  serverTimestamp,
+  updateDoc,
+  doc,
+} from "firebase/firestore";
 
 const CheckoutFormik = () => {
+  const [orderId, setOrderId] = useState(null);
+  const { cart, getTotalPrice, clearCart } = useContext(CartContext);
+
+  const total = getTotalPrice();
+
+  const enviarOrden = (formDetails) => {
+    let orden = {
+      buyer: formDetails,
+      items: cart,
+      total,
+      time: serverTimestamp(),
+    };
+    console.log(orden);
+
+    const ordersCollection = collection(db, "ordenes");
+    addDoc(ordersCollection, orden).then((res) => setOrderId(res.id));
+    cart.forEach((elemento) => {
+      updateDoc(doc(db, "products", elemento.id), {
+        stock: elemento.stock - elemento.quantity,
+      });
+    });
+    clearCart();
+  };
   const { handleChange, handleSubmit, errors } = useFormik({
     initialValues: {
       nombre: "",
@@ -12,9 +46,8 @@ const CheckoutFormik = () => {
       repetPassword: "",
     },
 
-    onSubmit: (data) => {
-      console.log("se envio");
-      console.log(data);
+    onSubmit: (formDetails) => {
+      enviarOrden(formDetails);
     },
 
     validateOnChange: false, //esto hace que no se coloque en rojo apenas se escribe sin validar
@@ -30,7 +63,7 @@ const CheckoutFormik = () => {
         .required("El campo es obligatorio"),
       password: Yup.string()
         .required("El campo es obligatorio")
-        .matches(/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{4,8}$/, {
+        .matches(/^(?=.*[!@#$%^&.-?_*])(?=.*[a-z])(?=.*[A-Z]).{4,8}$/, {
           //expresion regular
           message:
             "La contraseña debe tener al menos una mayuscula, un numero, caracter especial y un min-max de 4-8 ",
@@ -41,56 +74,77 @@ const CheckoutFormik = () => {
   console.log(errors); // {nombre: "ewrrorasd", apellido: "dasdsadasd "}
 
   return (
-    <div style={{ padding: "50px" }}>
-      <form onSubmit={handleSubmit}>
-        <TextField
-          label="Nombre"
-          variant="outlined"
-          name="nombre"
-          color="secondary"
-          onChange={handleChange}
-          error={errors.nombre ? true : false}
-          helperText={errors.nombre}
-        />
+    <>
+      {orderId ? (
+        <div style={{ display: "flex", justifyContent: "center", gap: "20px" }}>
+          <h3>
+            {" "}
+            Gracias por comprar en nuestra tienda, su N° de compra es: {orderId}
+          </h3>
+          <Link to="/">
+            <Button variant="contained" color="secondary">
+              VOLVER AL INICIO
+            </Button>
+          </Link>
+        </div>
+      ) : (
+        <div>
+          <h2 style={{ textAlign: "center", color: "violet" }}>
+            Logueate para finalizar la compra
+          </h2>
+          <div style={{ padding: "50px", gap: "20px" }}>
+            <form onSubmit={handleSubmit}>
+              <TextField
+                label="Nombre"
+                variant="outlined"
+                name="nombre"
+                color="secondary"
+                onChange={handleChange}
+                error={errors.nombre ? true : false}
+                helperText={errors.nombre}
+              />
 
-        <TextField
-          label="Apellido"
-          variant="outlined"
-          name="apellido"
-          color="secondary"
-          onChange={handleChange}
-          error={errors.apellido ? true : false}
-          helperText={errors.apellido}
-        />
+              <TextField
+                label="Apellido"
+                variant="outlined"
+                name="apellido"
+                color="secondary"
+                onChange={handleChange}
+                error={errors.apellido ? true : false}
+                helperText={errors.apellido}
+              />
 
-        <TextField
-          label="Email"
-          variant="outlined"
-          name="email"
-          color="secondary"
-          onChange={handleChange}
-          error={errors.email ? true : false}
-          helperText={errors.email}
-        />
-        <TextField
-          label="Contraseña"
-          variant="outlined"
-          name="password"
-          color="secondary"
-          onChange={handleChange}
-          error={errors.password ? true : false}
-          helperText={errors.password}
-        />
+              <TextField
+                label="Email"
+                variant="outlined"
+                name="email"
+                color="secondary"
+                onChange={handleChange}
+                error={errors.email ? true : false}
+                helperText={errors.email}
+              />
+              <TextField
+                label="Contraseña"
+                variant="outlined"
+                name="password"
+                color="secondary"
+                onChange={handleChange}
+                error={errors.password ? true : false}
+                helperText={errors.password}
+              />
 
-        <Button variant="contained" type="submit" color="secondary">
-          Enviar
-        </Button>
+              <Button variant="contained" type="submit" color="secondary">
+                Enviar
+              </Button>
 
-        <Button variant={"outlined"} type="button" color="secondary">
-          Cancelar
-        </Button>
-      </form>
-    </div>
+              <Button variant={"outlined"} type="button" color="secondary">
+                Cancelar
+              </Button>
+            </form>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

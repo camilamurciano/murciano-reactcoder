@@ -19,10 +19,10 @@ const ItemListContainer = () => {
     let consulta = undefined;
 
     if (!categoryName) {
-      // SI NO EXISTE CATEGORYNAME ---> todos mis productos
+      // si existe se veran todos los productos
       consulta = productsCollection;
     } else {
-      // SI EXISTE CATEGORYNAME ---> parte de mis productos
+      // si no existe, se veran parte de los productos
       consulta = query(
         productsCollection,
         where("category", "==", categoryName)

@@ -30,7 +30,9 @@ const CartContainer = () => {
   };
   return (
     <div>
-      <h1 style={{ display: "flex", justifyContent: "center" }}>
+      <h1
+        style={{ display: "flex", justifyContent: "center", color: "violet" }}
+      >
         Carrito de Compras
       </h1>
 
@@ -54,7 +56,7 @@ const CartContainer = () => {
       {cart.length > 0 && (
         <div>
           <h2>El total a pagar es: {total}</h2>
-          <Link to="/login">
+          <Link to="/checkoutformik">
             <Button variant="contained" color="secondary">
               Finalizar Compra
             </Button>

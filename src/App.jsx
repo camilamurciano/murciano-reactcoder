@@ -41,7 +41,7 @@ function App() {
             />
             <Route path="/cart" element={<Cart />} />
             <Route path="/ItemDetail/:id" element={<ItemDetailContainer />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/checkoutformik" element={<CheckoutFormik />} />
 
             <Route path="*" element={<h1>Pages not found</h1>} />
           </Route>
