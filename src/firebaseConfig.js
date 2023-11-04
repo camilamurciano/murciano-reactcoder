@@ -2,12 +2,12 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA0vrXojdHJ_MneskqKxDjUzR4UOGom-nQ",
-  authDomain: "murciano-reactcoder.firebaseapp.com",
-  projectId: "murciano-reactcoder",
-  storageBucket: "murciano-reactcoder.appspot.com",
-  messagingSenderId: "316265732167",
-  appId: "1:316265732167:web:8837ff2fe9cf965af83962",
+  apiKey: import.meta.env.VITE_APIKEY,
+  authDomain: import.meta.env.VITE_AUTH,
+  projectId: import.meta.env.VITE_PROJECT,
+  storageBucket: import.meta.env.VITE_STORAGE,
+  messagingSenderId: import.meta.env.VITE_MESSAGING,
+  appId: import.meta.env.VITE_APPID,
 };
 
 // Initialize Firebase

@@ -37,7 +37,7 @@ const CartContainer = () => {
       </h1>
 
       {cart.map((product) => (
-        <div key={product.id}>
+        <div key={product.id} style={{ border: "2px solid violet" }}>
           <h2>{product.title}</h2>
           <h2>{product.price}</h2>
           <h2>cantidad: {product.quantity}</h2>

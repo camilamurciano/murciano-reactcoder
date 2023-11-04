@@ -1,8 +1,37 @@
-# React + Vite
+# Bienvenido/a a mi tienda
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## por Camila Daniela Murciano
 
-Currently, two official plugins are available:
+### Las herramientas utilizadas en este proyecto son:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- react
+- libreria MUI
+- sweat alert
+- react icons
+- formik
+- yup
+- firebase
+
+![](https://res.cloudinary.com/dpzoqa2gm/image/upload/v1695514349/perro-gato_euaror.jpg)
+
+## Libreria recomendada y utlizada para este proyecto:
+
+### Vite
+
+![](/public/vite.svg)
+
+#### Para su instalación haga click en el siguiente [Link](https://es.vitejs.dev/guide/)
+
+#### Comandos utilizados para luego de la creacion de usuario en vite:
+
+```
+npm create vite@latest
+```
+
+```
+npm install
+```
+
+```
+npm run dev
+```
