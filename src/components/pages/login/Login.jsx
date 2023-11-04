@@ -17,18 +17,6 @@ export const Login = () => {
 
   const total = getTotalPrice();
   {
-    /*const [userInfo, setUserInfo] = useState({
-    nombre: "",
-    apellido: "",
-    email: "",
-  });
-
-  const [errors, setErrors] = useState({
-    nombre: null,
-    apellido: null,
-    email: null,
-  });
-*/
   }
   const handleChange = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });

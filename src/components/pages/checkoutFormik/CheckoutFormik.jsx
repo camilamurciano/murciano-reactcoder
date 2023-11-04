@@ -26,7 +26,6 @@ const CheckoutFormik = () => {
       total,
       time: serverTimestamp(),
     };
-    console.log(orden);
 
     const ordersCollection = collection(db, "ordenes");
     addDoc(ordersCollection, orden).then((res) => setOrderId(res.id));
@@ -70,8 +69,6 @@ const CheckoutFormik = () => {
         }),
     }),
   });
-
-  console.log(errors); // {nombre: "ewrrorasd", apellido: "dasdsadasd "}
 
   return (
     <>

@@ -24,19 +24,9 @@ const CounterContainer = ({ stock, onAdd, initial = 1 }) => {
     }
   };
 
-  // useEffect( ()=>{
-
-  //   // PETICION A UN SERVIDOR
-  // console.log("Se realizo una peticion")
-
-  // } , [] )
-
   useEffect(() => {
     // PETICION A UN SERVIDOR
-    console.log("Se realizo una peticion");
   }, [nombre, contador]); // array de dependencias
-
-  console.log("montaje o actualizacion");
 
   return (
     <CounterPresentacional

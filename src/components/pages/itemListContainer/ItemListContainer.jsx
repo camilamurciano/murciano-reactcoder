@@ -11,7 +11,6 @@ const ItemListContainer = () => {
   const [items, setItems] = useState([]);
 
   const { categoryName } = useParams();
-  console.log(categoryName);
 
   useEffect(() => {
     let productsCollection = collection(db, "products");

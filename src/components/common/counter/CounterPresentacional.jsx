@@ -29,9 +29,6 @@ const CounterPresentacional = ({
       >
         Agregar al carrito
       </Button>
-
-      {/*<h4>{nombre}</h4>
-          <button onClick={()=>setNombre("juancito")}>Cambiar nombre</button> */}
     </div>
   );
 };

@@ -6,7 +6,7 @@ import { CartContextt } from "../../../context/CartContextt";
 
 const CartWidget = () => {
   const e = useContext(CartContextt);
-  console.log({ e });
+
   const { getTotalQuantity } = useContext(CartContextt);
   let total = getTotalQuantity();
   return (
