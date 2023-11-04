@@ -13,15 +13,17 @@ export const Footer = () => {
 
         <div className="footerDiv">
           <p>Buenos Aires, Argentina</p>
-          <a href="">
-            <CgMail size={35} />
-          </a>
-          <a href="">
-            <IoLogoWhatsapp size={35} />
-          </a>
-          <a href="">
-            <BiLogoInstagram size={35} />
-          </a>
+          <div style={{ display: "flex", justifyContent: "end" }}>
+            <a href="">
+              <CgMail size={35} />
+            </a>
+            <a href="">
+              <IoLogoWhatsapp size={35} />
+            </a>
+            <a href="">
+              <BiLogoInstagram size={35} />
+            </a>
+          </div>
         </div>
       </div>
     </>
